@@ -16,6 +16,7 @@ import { useCart } from "../context/CartContext";
 import { useAuth } from "../hooks/useAuth";
 import api from "../services/api";
 import RecommendedPlants from "../components/plants/RecommendedPlants";
+import PlantImagePlaceholder from "../components/plants/PlantImagePlaceholder";
 import toast from "react-hot-toast";
 
 const Checkout = () => {
@@ -336,10 +337,16 @@ const Checkout = () => {
                         {activeStep === 2 && (
                             <div className="fk-active-card">
                                 <div className="fk-order-items">
-                                    {cartItems.map((item) => (
+                                    {cartItems.map((item) => {
+                                        const isPlaceholder = !item.image || item.image.includes('placehold.co') || item.image.includes('via.placeholder.com');
+                                        return (
                                         <div key={item._id} className="fk-item">
                                             <div className="fk-item-image">
-                                                <img src={item.image} alt={item.name} />
+                                                {isPlaceholder ? (
+                                                    <PlantImagePlaceholder />
+                                                ) : (
+                                                    <img src={item.image} alt={item.name} />
+                                                )}
                                             </div>
                                             <div className="fk-item-details">
                                                 <div className="fk-item-title">{item.name}</div>
@@ -356,7 +363,7 @@ const Checkout = () => {
                                                 </div>
                                             </div>
                                         </div>
-                                    ))}
+                                    })}
                                 </div>
                                 
                                 {/* COUPON SECTION */}

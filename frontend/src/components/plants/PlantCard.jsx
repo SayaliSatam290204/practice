@@ -13,6 +13,7 @@ import {
 import { useCart } from '../../context/CartContext';
 import { useWishlist } from '../../context/WishlistContext';
 import { useAuth } from '../../hooks/useAuth';
+import PlantImagePlaceholder from './PlantImagePlaceholder';
 
 const PlantCard = ({ plant }) => {
     const navigate = useNavigate();
@@ -111,6 +112,8 @@ const PlantCard = ({ plant }) => {
         toggleWishlist(plant);
     };
 
+    const isPlaceholderImage = !plant.image || plant.image.includes('placehold.co') || plant.image.includes('via.placeholder.com');
+
     return (
 
         <article className="plant-card">
@@ -127,14 +130,17 @@ const PlantCard = ({ plant }) => {
                     className="plant-image-link"
                 >
 
-                    <img
-                        src={plant.image}
-                        alt={plant.name}
-                        className="plant-image"
-                    />
+                    {isPlaceholderImage ? (
+                        <PlantImagePlaceholder className="plant-image" />
+                    ) : (
+                        <img
+                            src={plant.image}
+                            alt={plant.name}
+                            className="plant-image"
+                        />
+                    )}
 
                 </Link>
-
 
                 {/* Discount */}
 

@@ -17,7 +17,7 @@ import {
 } from "react-icons/fa";
 
 import api from "../services/api";
-
+import PlantImagePlaceholder from "../components/plants/PlantImagePlaceholder";
 
 const Orders = () => {
 
@@ -553,18 +553,22 @@ const Orders = () => {
                                 <div className="order-items-list">
                                     {orderItems.map((item, index) => {
                                         const product = item.plant || item.product || item;
-                                        const itemName = product?.name || item.name || "Plant";
-                                        const itemImage = product?.image || item.image || "";
+                                        // Prioritize natively stored name over populated plant name
+                                        const itemName = item.name || product?.name || "Plant";
+                                        const itemImage = item.image || product?.image || "";
+                                        const itemCategory = item.category || product?.category || "";
                                         const itemQuantity = item.quantity || 1;
                                         const itemPrice = item.price || product?.price || 0;
+                                        
+                                        const isPlaceholderImage = !itemImage || itemImage.includes('placehold.co') || itemImage.includes('via.placeholder.com');
 
                                         return (
                                             <div className="order-item-row" key={item._id || item.productId || index}>
                                                 <div className="item-thumbnail">
-                                                    {itemImage ? (
-                                                        <img src={itemImage} alt={itemName} />
+                                                    {isPlaceholderImage ? (
+                                                        <PlantImagePlaceholder />
                                                     ) : (
-                                                        <div className="thumbnail-placeholder"><FaLeaf /></div>
+                                                        <img src={itemImage} alt={itemName} />
                                                     )}
                                                 </div>
                                                 <div className="item-details">

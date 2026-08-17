@@ -73,6 +73,9 @@ const createOrder = async (req, res) => {
         //create the order items
         const items = processedCartItems.map((item) => ({
             plant: item.plant._id,
+            name: item.plant.name,
+            image: item.plant.image,
+            category: item.plant.category,
             quantity: item.quantity,
             price: item.price
         }));

@@ -23,6 +23,7 @@ import { useCart } from "../context/CartContext";
 import { useWishlist } from "../context/WishlistContext";
 import { useAuth } from "../hooks/useAuth";
 import RecommendedPlants from "../components/plants/RecommendedPlants";
+import PlantImagePlaceholder from "../components/plants/PlantImagePlaceholder";
 
 const PlantDetails = () => {
     const { id } = useParams();
@@ -301,11 +302,15 @@ const PlantDetails = () => {
 
                     <div className="plant-details-image-section">
                         <div className="plant-details-image-wrapper">
-                            <img
-                                src={plant.image}
-                                alt={plant.name}
-                                className="plant-details-image"
-                            />
+                            {(!plant.image || plant.image.includes('placehold.co') || plant.image.includes('via.placeholder.com')) ? (
+                                <PlantImagePlaceholder className="plant-details-image" />
+                            ) : (
+                                <img
+                                    src={plant.image}
+                                    alt={plant.name}
+                                    className="plant-details-image"
+                                />
+                            )}
 
                             {hasDiscount && (
                                 <span className="details-sale-badge">

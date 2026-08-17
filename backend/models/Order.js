@@ -14,7 +14,9 @@ const orderSchema = new mongoose.Schema(
                     ref: 'Plant',
                     required: true,
                 },
-
+                name: { type: String, required: true },
+                image: { type: String },
+                category: { type: String },
                 quantity: {
                     type: Number,
                     required: true,
