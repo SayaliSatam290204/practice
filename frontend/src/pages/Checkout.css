@@ -1,0 +1,465 @@
+/* Flipkart Style Checkout */
+
+.fk-checkout-container {
+    background-color: var(--bg);
+    min-height: 100vh;
+    color: var(--text);
+}
+
+.fk-header {
+    background-color: var(--bg);
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 1px solid var(--border);
+}
+
+.fk-logo {
+    color: var(--primary);
+    font-size: 24px;
+    font-weight: bold;
+    text-decoration: none;
+    font-family: var(--heading);
+}
+
+.fk-checkout-main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 32px 16px;
+}
+
+.fk-checkout-layout {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+    align-items: start;
+}
+
+@media (max-width: 968px) {
+    .fk-checkout-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* LEFT COLUMN */
+.fk-flow-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Progress Tracker */
+.fk-progress-tracker {
+    background: transparent;
+    border-bottom: 1px solid var(--border);
+    padding: 24px 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.fk-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    color: #878787;
+    position: relative;
+    z-index: 2;
+}
+
+.fk-step.active, .fk-step.completed {
+    color: var(--primary);
+}
+
+.fk-step-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: #f1f3f6;
+    color: #878787;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.fk-step.active .fk-step-icon,
+.fk-step.completed .fk-step-icon {
+    background: var(--primary);
+    color: #fff;
+}
+
+.fk-step span {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.fk-step-line {
+    flex: 1;
+    height: 2px;
+    background: #e0e0e0;
+    margin: 0 16px;
+    position: relative;
+    top: -14px;
+    z-index: 1;
+}
+
+.fk-step-line.active {
+    background: var(--primary);
+}
+
+/* Cards */
+.fk-completed-card {
+    background: transparent;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    padding: 24px 0;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.fk-completed-label {
+    color: var(--text-h);
+    font-size: 18px;
+    font-family: var(--heading);
+    width: 150px;
+    display: inline-block;
+}
+
+.fk-completed-body {
+    flex: 1;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+.fk-completed-body strong {
+    font-weight: 500;
+}
+
+.fk-completed-body p {
+    margin: 4px 0 0 0;
+}
+
+.fk-change-btn {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--primary);
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.fk-active-card {
+    background: transparent;
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.fk-active-card.no-padding {
+    padding: 0;
+}
+
+/* Forms */
+.fk-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.fk-form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.fk-input-group {
+    flex: 1;
+}
+
+.fk-input-group input,
+.fk-input-group textarea {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    font-size: 14px;
+    font-family: inherit;
+    outline: none;
+    box-sizing: border-box;
+}
+
+.fk-input-group input:focus,
+.fk-input-group textarea:focus {
+    border-color: #2874f0;
+}
+
+/* Button */
+.fk-btn-primary {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 16px 32px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: none;
+    text-transform: none;
+}
+
+/* Order Summary Step */
+.fk-order-items {
+    padding-bottom: 24px;
+}
+
+.fk-item {
+    display: flex;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.fk-item-image {
+    width: 100px;
+    height: 100px;
+}
+
+.fk-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.fk-item-details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.fk-item-title {
+    font-size: 16px;
+    color: #212121;
+}
+
+.fk-item-qty {
+    font-size: 14px;
+    color: #878787;
+}
+
+.fk-price-current {
+    font-size: 18px;
+    font-weight: 500;
+}
+
+.fk-item-qty-controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 12px;
+}
+
+.fk-qty-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.fk-qty-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 1px solid #c2c2c2;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #212121;
+    font-size: 10px;
+}
+
+.fk-qty-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.fk-qty-input {
+    width: 40px;
+    height: 28px;
+    border: 1px solid #c2c2c2;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 500;
+    color: #212121;
+}
+
+.fk-remove-btn {
+    background: none;
+    border: none;
+    color: #212121;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+.fk-remove-btn:hover {
+    color: #2874f0;
+}
+
+.fk-continue-bar {
+    background: #f5faff;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 -24px -24px -24px;
+    border-top: 1px solid #f0f0f0;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.fk-continue-bar p {
+    margin: 0;
+    font-size: 14px;
+    color: #878787;
+}
+
+/* Payment Step */
+.fk-payment-header {
+    padding: 16px 24px;
+    background: #2874f0;
+    color: #fff;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+}
+
+.fk-back-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+}
+
+.fk-payment-layout {
+    display: flex;
+    min-height: 300px;
+}
+
+.fk-payment-tabs {
+    width: 250px;
+    background: #fff;
+    border-right: 1px solid #f0f0f0;
+}
+
+.fk-payment-tab {
+    padding: 20px 24px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    color: #878787;
+}
+
+.fk-payment-tab.active {
+    background: #f5faff;
+    color: #2874f0;
+    border-right: 3px solid #2874f0;
+}
+
+.fk-payment-content {
+    flex: 1;
+    padding: 24px;
+    background: #f5faff;
+}
+
+.fk-payment-pane h4 {
+    margin: 0 0 8px 0;
+    font-size: 16px;
+    color: #212121;
+}
+
+.fk-payment-desc {
+    font-size: 14px;
+    color: #878787;
+    margin-bottom: 24px;
+}
+
+/* Right Column */
+.fk-summary-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    position: sticky;
+    top: 32px;
+}
+
+.fk-price-card {
+    background: var(--accent-light);
+    border-radius: 16px;
+    box-shadow: none;
+    border: 1px solid var(--accent);
+}
+
+.fk-price-header {
+    padding: 24px;
+    font-size: 20px;
+    font-family: var(--heading);
+    color: var(--text-h);
+    border-bottom: 1px dashed var(--accent);
+}
+
+.fk-price-body {
+    padding: 0 24px;
+}
+
+.fk-price-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 16px 0;
+    font-size: 14px;
+    color: #212121;
+}
+
+.fk-free {
+    color: #388e3c;
+    font-weight: 500;
+}
+
+.fk-price-total {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 0;
+    font-size: 18px;
+    font-weight: 500;
+    border-top: 1px dashed #e0e0e0;
+    border-bottom: 1px dashed #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.fk-secure-badge {
+    color: #878787;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    padding: 16px;
+}
+
+.fk-error {
+    background: #ffebee;
+    color: #d32f2f;
+    padding: 12px;
+    margin-bottom: 16px;
+    font-size: 14px;
+    border-radius: 4px;
+}
