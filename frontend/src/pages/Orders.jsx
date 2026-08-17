@@ -451,6 +451,7 @@ const Orders = () => {
 
 
                         const orderStatus =
+                            order.orderStatus ||
                             order.status ||
                             "Processing";
 
